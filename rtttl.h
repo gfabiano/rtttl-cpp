@@ -176,6 +176,7 @@ class RTTTL {
 
                 // Check for diesis
                 if (m_actual == '#') {
+                    a_n.name[1] = '#';
                     id_note += 8;
                     next_char();
                 }
@@ -198,11 +199,8 @@ class RTTTL {
                     return 1.0;
                 }();
 
-
                 a_n.freq = m_notes[id_note] * (1 << (a_n.octave - 4));
-                a_n.msec = (m_msec_semibreve / a_n.duration) * mult_duration;
-    
-                a_n.name[1] = (id_note > 7)?'#': '\0';
+                a_n.msec = (m_msec_semibreve / a_n.duration) * mult_duration; 
     
                 vec_notes.push_back(move(a_n));
             }
